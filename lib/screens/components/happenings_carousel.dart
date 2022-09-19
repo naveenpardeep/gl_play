@@ -82,7 +82,6 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-
                   /// Some difficult shit here, try to understand it
                   children: happenings.asMap().entries.map((entry) {
                     return GestureDetector(

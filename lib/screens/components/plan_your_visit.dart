@@ -6,7 +6,7 @@ class PlanYourVisit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+    // final screenHeight = MediaQuery.of(context).size.height;
     return SliverToBoxAdapter(
       child: Container(
         color: Colors.black12,
@@ -24,9 +24,9 @@ class PlanYourVisit extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _circleIcon(Colors.red, screenWidth, screenHeight),
-                  _circleIcon(Colors.blue, screenWidth, screenHeight),
-                  _circleIcon(Colors.green, screenWidth, screenHeight),
+                  _circleIcon(Icons.location_on, screenWidth, "Park Map"),
+                  _circleIcon(Icons.percent, screenWidth, "Promotions"),
+                  _circleIcon(Icons.local_activity, screenWidth, "Buy Tickets"),
                 ],
               ),
             ],
@@ -36,20 +36,17 @@ class PlanYourVisit extends StatelessWidget {
     );
   }
 
-  Widget _circleIcon(Color color, double width, double height){
+  Widget _circleIcon(IconData iconData, double width, String bottomLabel){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: color,
-            shape: BoxShape.circle,
-          ),
-          width: width / 4,
-          height: height / 8,
-          child: const Center(child: Text("Insert icon here", textAlign: TextAlign.center,)),
+      children:  [
+        Icon(
+          iconData,
+          size: width/5,
+          color: Colors.red,
         ),
-        const Text("something", style: TextStyle(color: Colors.red),)
+        const SizedBox(height: 10,),
+        Text(bottomLabel, style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.red),)
       ],
     );
   }

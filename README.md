@@ -7,3 +7,5 @@ The mobile app GL Play
 ### MOBILE APP (activities flow 1) - Home
 ![](assets/gifs/home_preview.gif)  
 
+### Activities page (flow 2)
+![](assets/gifs/activities_preview_1.gif)  

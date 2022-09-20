@@ -12,7 +12,7 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.only(top: 10, bottom: 10),
+        padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,8 +44,8 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Placeholder(
-                  fallbackWidth: MediaQuery.of(context).size.width / 4,
-                  fallbackHeight: MediaQuery.of(context).size.height / 8),
+                  fallbackWidth: MediaQuery.of(context).size.width / 5,
+                  fallbackHeight: MediaQuery.of(context).size.height / 10),
               const Text(
                 "WATER",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -60,8 +60,8 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Placeholder(
-                  fallbackWidth: MediaQuery.of(context).size.width / 4,
-                  fallbackHeight: MediaQuery.of(context).size.height / 8),
+                  fallbackWidth: MediaQuery.of(context).size.width / 5,
+                  fallbackHeight: MediaQuery.of(context).size.height / 10),
               const Text(
                 "WATER",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -76,8 +76,8 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Placeholder(
-                  fallbackWidth: MediaQuery.of(context).size.width / 4,
-                  fallbackHeight: MediaQuery.of(context).size.height / 8),
+                  fallbackWidth: MediaQuery.of(context).size.width / 5,
+                  fallbackHeight: MediaQuery.of(context).size.height / 10),
               const Text(
                 "WATER",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),

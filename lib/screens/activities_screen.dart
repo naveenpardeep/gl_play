@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gl_play/model/acitivity.dart';
+import 'package:gl_play/screens/activity_detail_screen.dart';
 import 'components/subscribe_form.dart';
 
 class ActivitiesScreen extends StatefulWidget {
@@ -14,31 +15,36 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
     Activity(
         name: "Splashmania",
         category: "WATER",
-        description: "Asia's Largest Raiforest Themed Water Park.",
+        excerpt: "Asia's Largest Raiforest Themed Water Park.",
+        description: '',
         price: 69.00,
         promotion: "Buy 2 Free 1"
     ),
     Activity(
         name: "Big Bucket Splash",
         category: "WATER",
-        description: "Calling young hearts to spend a day at BIG BUCKET SPLASH!",
+        excerpt: "Calling young hearts to spend a day at BIG BUCKET SPLASH!",
+        description: '',
         price: 69.00,
         promotion: "-69%"
     ),
     Activity(
         name: "Water Playscape",
         category: "WATER",
-        description: "The perfect space for your little ones to cool off, located within The Buzz.ar",
+        excerpt: "The perfect space for your little ones to cool off, located within The Buzz.ar",
+        description: '',
         price: 69.00),
     Activity(
         name: "Beach Pool Club",
         category: "WATER",
-        description: "A premier event and dining destination, guests are invited to escape the hustle.",
+        excerpt: "A premier event and dining destination, guests are invited to escape the hustle.",
+        description: '',
         price: 69.00),
     Activity(
         name: "D'Swim Academy",
         category: "WATER",
-        description: "DSA is proud to be the LARGEST and only GOLD LEVEL AUTISM Recognised Swim Centre in Malaysia.",
+        excerpt: "DSA is proud to be the LARGEST and only GOLD LEVEL AUTISM Recognised Swim Centre in Malaysia.",
+        description: '',
         price: 69.00),
   ];
 
@@ -61,39 +67,51 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                 itemCount: activities.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  return Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _imageAndPromotion(activities[index].promotion ?? ''),
-                          const SizedBox(height: 10.0,),
-                          Text(activities[index].category.toUpperCase(),style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.blue),),
-                          const SizedBox(height: 10.0,),
-                          Text(activities[index].name.toUpperCase(),style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.black)),
-                          const SizedBox(height: 10.0,),
-                          Text(activities[index].description,maxLines: 4,overflow: TextOverflow.ellipsis,),
-                          const Expanded(child: SizedBox(height: double.infinity,)),
-                          const Divider(
-                            color: Colors.black54,
-                            thickness: 0.5,
-                          ),
-                          const Text("NOW",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.black)),
-                          Text('RM${activities[index].price.toString()}',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 26,color: Colors.black),),
-                        ],
-                      ),
-                    ),
+                  final activity = activities[index];
+                  return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ActivityDetailScreen(activity: activity)));
+                      },
+                      child: _activityCard(activity)
                   );
-                }),
+                }
+                ), 
           ),
         ),
         const SubscribeForm(),
       ],
     );
   }
+  
+  Widget _activityCard(Activity activity){
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _imageAndPromotion(activity),
+            const SizedBox(height: 10.0,),
+            Text(activity.category.toUpperCase(),style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.blue),),
+            const SizedBox(height: 10.0,),
+            Text(activity.name.toUpperCase(),style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.black)),
+            const SizedBox(height: 10.0,),
+            Text(activity.excerpt,maxLines: 4,overflow: TextOverflow.ellipsis,),
+            const Expanded(child: SizedBox(height: double.infinity,)),
+            const Divider(
+              color: Colors.black54,
+              thickness: 0.5,
+            ),
+            const Text("NOW",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.black)),
+            Text('RM${activity.price.toString()}',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 26,color: Colors.black),),
+          ],
+        ),
+      ),
+    );
+    
+  }
 
-  _appBar() {
+  Widget _appBar() {
     return SliverAppBar(
       // title: PreferredSize(
       //     preferredSize: Size.fromHeight(28),
@@ -120,16 +138,19 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
     );
   }
   
-  Widget _imageAndPromotion(String promotion){
+  Widget _imageAndPromotion(Activity activity){
     return Stack(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(8.0),
-          child: Image.asset('assets/images/confused_cat.jpeg'),
+        Hero(
+          tag: activity,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset('assets/images/confused_cat.jpeg'),
+          ),
         ),
         Container(
           alignment: Alignment.topRight,
-          child: promotion != '' ? Container(
+          child: activity.promotion != null ? Container(
             margin: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
@@ -138,7 +159,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
             child:  Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0,horizontal: 4.0),
               child: Text( 
-                promotion.toUpperCase(),
+                activity.promotion!.toUpperCase(),
                 style: const TextStyle(color: Colors.white,fontSize: 12,fontWeight: FontWeight.bold),),
             ),
           ) : const SizedBox(),

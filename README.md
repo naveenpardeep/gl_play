@@ -11,4 +11,4 @@ The mobile app GL Play
 ![](assets/gifs/activities_preview_1.gif)  
 
 ### Activities page (flow 3)
-Currently working on it.
+![](assets/gifs/activities_preview_2.gif)  

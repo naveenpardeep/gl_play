@@ -17,6 +17,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+
   List<Widget> screenList = [
     const HomeScreen(),
     const ActivitiesScreen(),
@@ -25,7 +26,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const NotificationsScreen(),
     const MoreScreen(),
   ];
+  late PageController _pageController;
   late int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _selectedIndex);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
 
 
   @override
@@ -33,7 +47,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return GestureDetector(
       onTap: ()=> FocusScope.of(context).unfocus(),
       child: Scaffold(
-        body: screenList[_selectedIndex],
+        body: PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: screenList,
+          // onPageChanged: (index){
+          //   setState(() {
+          //     _selectedIndex = index;
+          //   });
+          // },
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           selectedFontSize: 10.0,
@@ -42,6 +65,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
           onTap: (index) => {
             setState(() {
               _selectedIndex = index;
+              _pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+              //_pageController.jumpToPage(index);
             })
           },
           items: const [

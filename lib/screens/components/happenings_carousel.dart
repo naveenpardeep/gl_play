@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/text_style.dart';
 
 import '../../model/happening.dart';
 
@@ -67,7 +68,7 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
                                 item.title, item.description, item.tags))
                             .toList(),
                         options: CarouselOptions(
-                            height: MediaQuery.of(context).size.height * 0.65,
+                            height: MediaQuery.of(context).size.height * 0.6,
                             viewportFraction: 1.0,
                             enlargeCenterPage: false,
                             enableInfiniteScroll: false,
@@ -129,18 +130,15 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
           children: [
             Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              style: AppTextStyle.header1(),
             ),
             const SizedBox(height: 40),
             Text(
               description,
-              style: const TextStyle(fontSize: 20, color: Colors.black54),
+              style: AppTextStyle.biggerText().copyWith(color: Colors.black54),
             ),
             const SizedBox(height: 15),
-            const Expanded(
-                child: SizedBox(
-              width: double.infinity,
-            )),
+            const Expanded(child: SizedBox()),
             const Divider(
               color: Colors.black54,
               thickness: 1,
@@ -149,16 +147,11 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
             RichText(
               text: TextSpan(
                   text: 'TAG: ',
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTextStyle.normalText().copyWith(color: Colors.red,fontWeight: FontWeight.bold),
                   children: <TextSpan>[
                     TextSpan(
                       text: tag,
-                      style: const TextStyle(
-                          fontSize: 11, fontWeight: FontWeight.w300),
+                      style: AppTextStyle.smallText().copyWith(fontWeight: FontWeight.w300),
                     ),
                   ]),
             ),
@@ -184,8 +177,7 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
       ),
       child: Text(
         label,
-        style: TextStyle(
-            fontSize: 18, color: labelColor, fontWeight: FontWeight.bold),
+        style: AppTextStyle.biggerText().copyWith(color: Colors.white,fontWeight: FontWeight.bold)
       ),
     );
   }

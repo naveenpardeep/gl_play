@@ -20,18 +20,22 @@ class ParksAndAttraction extends StatelessWidget {
             ),
             const SizedBox(height: 20.0,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _circleLogo(Colors.red, screenWidth, screenHeight),
-                _circleLogo(Colors.blue, screenWidth, screenHeight),
-                _circleLogo(Colors.green, screenWidth, screenHeight),
+                _circleLogo(Colors.green, screenWidth/3.75),
+                const SizedBox(width: 10.0,),
+                _circleLogo(Colors.yellow,screenWidth/3.75),
+                const SizedBox(width: 10.0,),
+                _circleLogo(Colors.purple,screenWidth/3.75),
               ],
             ),
+            const SizedBox(height: 10.0,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _circleLogo(Colors.purple,screenWidth, screenHeight),
-                _circleLogo(Colors.yellow,screenWidth, screenHeight),
+                _circleLogo(Colors.red,screenWidth/3.75),
+                const SizedBox(width: 10.0,),
+                _circleLogo(Colors.blue,screenWidth/3.75),
               ],
             ),
           ],
@@ -40,15 +44,16 @@ class ParksAndAttraction extends StatelessWidget {
     );
   }
 
-  Widget _circleLogo(Color color, double width, double height){
-    return Container(
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
+  Widget _circleLogo(Color color,double width){
+    return ClipOval(
+      child: Image.asset(
+        'assets/images/confused_cat.jpeg',
+        fit: BoxFit.contain,
+        color: color.withOpacity(0.7),
+        colorBlendMode: BlendMode.color,
+        width: width,
       ),
-      width:  width / 4,
-      height: height / 8,
-      child: const Center(child: Text("Insert logo here", textAlign: TextAlign.center,)),
     );
   }
+
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/text_style.dart';
 
 class PlanYourIdealDay extends StatefulWidget {
   const PlanYourIdealDay({Key? key}) : super(key: key);
@@ -16,13 +17,13 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+             Text(
               "PLAN YOUR IDEAL DAY",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: AppTextStyle.title(),
             ),
-            const Text(
+             Text(
               "Select Your Preference Activities to Personalize Your Experience",
-              style: TextStyle(fontSize: 16),
+              style: AppTextStyle.normalText(),
               textAlign: TextAlign.center,
             ),
             _preferenceActivitiesPlaceHolder(),
@@ -46,9 +47,9 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
               Placeholder(
                   fallbackWidth: MediaQuery.of(context).size.width / 5,
                   fallbackHeight: MediaQuery.of(context).size.height / 10),
-              const Text(
+              Text(
                 "WATER",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                style: AppTextStyle.header4(),
               ),
               const Icon(
                 Icons.check_circle_outline,
@@ -62,9 +63,9 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
               Placeholder(
                   fallbackWidth: MediaQuery.of(context).size.width / 5,
                   fallbackHeight: MediaQuery.of(context).size.height / 10),
-              const Text(
+              Text(
                 "WATER",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                style: AppTextStyle.header4(),
               ),
               const Icon(
                 Icons.check_circle_outline,
@@ -78,9 +79,9 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
               Placeholder(
                   fallbackWidth: MediaQuery.of(context).size.width / 5,
                   fallbackHeight: MediaQuery.of(context).size.height / 10),
-              const Text(
+              Text(
                 "WATER",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                style: AppTextStyle.header4(),
               ),
               const Icon(
                 Icons.check_circle_outline,

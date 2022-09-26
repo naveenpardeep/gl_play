@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gl_play/model/acitivity.dart';
 import 'package:gl_play/screens/activity_detail_screen.dart';
+import 'package:gl_play/styles/text_style.dart';
 import 'components/subscribe_form.dart';
 
 class ActivitiesScreen extends StatefulWidget {
@@ -11,14 +12,14 @@ class ActivitiesScreen extends StatefulWidget {
 }
 
 class _ActivitiesScreenState extends State<ActivitiesScreen>
-    with AutomaticKeepAliveClientMixin
-{
+    with AutomaticKeepAliveClientMixin {
   final List<Activity> activities = [
     Activity(
         name: "Splashmania",
         category: "WATER",
         excerpt: "Asia's Largest Raiforest Themed Water Park.",
-        description: '',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         price: 69.00,
         promotion: "Buy 2 Free 1"),
     Activity(
@@ -34,21 +35,24 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
         category: "WATER",
         excerpt:
             "The perfect space for your little ones to cool off, located within The Buzz.ar",
-        description: '',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         price: 69.00),
     Activity(
         name: "Beach Pool Club",
         category: "WATER",
         excerpt:
             "A premier event and dining destination, guests are invited to escape the hustle.",
-        description: '',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         price: 69.00),
     Activity(
         name: "D'Swim Academy",
         category: "WATER",
         excerpt:
             "DSA is proud to be the LARGEST and only GOLD LEVEL AUTISM Recognised Swim Centre in Malaysia.",
-        description: '',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         price: 69.00),
   ];
 
@@ -63,25 +67,25 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: GridView.builder(
-              padding: EdgeInsets.zero,
-              //make this un-scrollable
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.375,
-                  crossAxisSpacing: 20.0),
-              itemCount: activities.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                final activity = activities[index];
-                return InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              ActivityDetailScreen(activity: activity)));
-                    },
-                    child: _activityCard(activity));
-              }),
+                padding: EdgeInsets.zero,
+                //make this un-scrollable
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.375,
+                    crossAxisSpacing: 20.0),
+                itemCount: activities.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  final activity = activities[index];
+                  return InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                ActivityDetailScreen(activity: activity)));
+                      },
+                      child: _activityCard(activity));
+                }),
           ),
         ),
         const SubscribeForm(),
@@ -102,26 +106,21 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
             ),
             Text(
               activity.category.toUpperCase(),
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                  color: Colors.blue),
+              style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold,color: Colors.blue),
             ),
             const SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             Text(activity.name.toUpperCase(),
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black)),
+                style: AppTextStyle.header3()),
             const SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
             Text(
               activity.excerpt,
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
+              style: AppTextStyle.normalText().copyWith(color: Colors.black54),
             ),
             const Expanded(
                 child: SizedBox(
@@ -131,17 +130,10 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
               color: Colors.black54,
               thickness: 0.5,
             ),
-            const Text("NOW",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black)),
+            Text("NOW", style: AppTextStyle.header3()),
             Text(
-              'RM${activity.price.toString()}',
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 26,
-                  color: Colors.black),
+              'RM${activity.price.toStringAsFixed(2)}',
+              style: AppTextStyle.title(),
             ),
           ],
         ),
@@ -200,10 +192,8 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                         vertical: 2.0, horizontal: 4.0),
                     child: Text(
                       activity.promotion!.toUpperCase(),
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold),
+                      style: AppTextStyle.smallText().copyWith(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 )

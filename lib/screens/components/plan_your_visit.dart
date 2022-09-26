@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../styles/text_style.dart';
 
 class PlanYourVisit extends StatelessWidget {
   const PlanYourVisit({Key? key}) : super(key: key);
@@ -15,9 +16,9 @@ class PlanYourVisit extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "PLAN YOUR VISIT",
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                style: AppTextStyle.title(),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20.0,),
@@ -46,7 +47,7 @@ class PlanYourVisit extends StatelessWidget {
           color: Colors.red,
         ),
         const SizedBox(height: 10,),
-        Text(bottomLabel, style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.red),)
+        Text(bottomLabel, style: AppTextStyle.header4().copyWith(color: Colors.red),)
       ],
     );
   }

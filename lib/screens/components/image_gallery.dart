@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/text_style.dart';
 
 class ImageGallery extends StatelessWidget {
   const ImageGallery({Key? key}) : super(key: key);
@@ -11,19 +12,19 @@ class ImageGallery extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(20.0),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Text(
               "SHARE YOUR MEMORIES USING #GAMUDAPLAY",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: AppTextStyle.title(),
               textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 20.0,),
           Column(
             children: [
-              _hashtagImagesRow(Colors.red,Colors.blue,Colors.green, screenWidth, screenHeight),
-              _hashtagImagesRow(Colors.purple,Colors.yellow,Colors.orange, screenWidth, screenHeight),
+              _hashtagImagesRow(),
+              _hashtagImagesRow(),
             ],
           ),
         ],
@@ -31,27 +32,24 @@ class ImageGallery extends StatelessWidget {
     );
   }
 
-  Widget _hashtagImagesRow(Color color1, Color color2, Color color3, double width, double height){
+  Widget _hashtagImagesRow(){
     return Row(
       children: [
-        Container(
-            color: color1,
-            width: width / 3,
-            height: height / 6,
-            child: const Center(child: Text("Insert image here", textAlign: TextAlign.center,))
-        ),
-        Container(
-            color: color2,
-            width: width / 3,
-            height: height / 6,
-            child: const Center(child: Text("Insert image here", textAlign: TextAlign.center,))
-        ),
-        Container(
-            color: color3,
-            width: width / 3,
-            height: height / 6,
-            child: const Center(child: Text("Insert image here", textAlign: TextAlign.center,))
-        )
+        Expanded(
+            child: Image.asset(
+              'assets/images/confused_cat.jpeg',
+              fit: BoxFit.contain,
+            )),
+        Expanded(
+            child: Image.asset(
+              'assets/images/confused_cat.jpeg',
+              fit: BoxFit.contain,
+            )),
+        Expanded(
+            child: Image.asset(
+              'assets/images/confused_cat.jpeg',
+              fit: BoxFit.contain,
+            )),
       ],
     );
   }

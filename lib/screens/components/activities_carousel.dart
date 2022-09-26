@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/text_style.dart';
 
 class ActivitiesCarousel extends StatefulWidget {
   const ActivitiesCarousel({Key? key}) : super(key: key);
@@ -11,16 +12,18 @@ class ActivitiesCarousel extends StatefulWidget {
 class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return SliverToBoxAdapter(
         child: Builder(
           builder: (context){
             return CarouselSlider(
                 items: [
-                  _activitiesSlide1(),
-                  _activitiesSlide2(),
+                  _activitiesSlide1(screenWidth),
+                  _activitiesSlide2(screenWidth),
                 ],
                 options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height*1.1,
                     viewportFraction: 1.0,
                     enlargeCenterPage: false, enableInfiniteScroll: false
                   // autoPlay: false,
@@ -31,7 +34,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
     );
   }
 
-  Widget _activitiesSlide1(){
+  Widget _activitiesSlide1(double width){
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -43,12 +46,9 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             const SizedBox(
               height: 20,
             ),
-            const Text(
+            Text(
               "WATER",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
+              style: AppTextStyle.title().copyWith(color: Colors.white),
             ),
             const SizedBox(
               height: 120,
@@ -56,11 +56,23 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start ,
               children: [
-                _rowCircleOfActivities(),
-                _rowCircleOfActivities(),
-                _rowCircleOfActivities(),
-                const SizedBox(
-                  height: 20,
+                Row(
+                  children: [
+                    _activityImageAndLabel("Splashmania"),
+                    _activityImageAndLabel("Big Bucket Splash"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    _activityImageAndLabel("Water Playscape"),
+                    _activityImageAndLabel("Beach Pool Club"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    _activityImageAndLabel("D'Swim Academy"),
+                    const Expanded(child: SizedBox()),
+                  ],
                 ),
               ],
             ),
@@ -73,7 +85,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
     );
   }
 
-  Widget _activitiesSlide2(){
+  Widget _activitiesSlide2(double width){
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -98,8 +110,18 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start ,
               children: [
-                _rowCircleOfActivities(),
-                _rowCircleOfActivities(),
+                Row(
+                  children: [
+                    _activityImageAndLabel("Water Playscape"),
+                    _activityImageAndLabel("Beach Pool Club"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    _activityImageAndLabel("D'Swim Academy"),
+                    const Expanded(child: SizedBox()),
+                  ],
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -128,55 +150,36 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
       ),
       child:  Text(
         label,
-        style: TextStyle(
-            fontSize: 18, color: labelColor, fontWeight: FontWeight.bold),
+        style: AppTextStyle.biggerText().copyWith(color: labelColor,fontWeight: FontWeight.bold),
       ),
     );
   }
-
-  Widget _rowCircleOfActivities() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Column(
+  
+  Widget _activityImageAndLabel(String label){
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
+            ClipOval(
+              child: Image.asset(
+                'assets/images/confused_cat.jpeg',
+                fit: BoxFit.contain,
+                //width: width,
               ),
-              width: MediaQuery.of(context).size.width / 3,
-              height: MediaQuery.of(context).size.height / 5,
             ),
-            const Text(
-              "WATER",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.white),
+            const SizedBox(height: 10.0,),
+            Text(
+              label.toUpperCase(),
+              style: AppTextStyle.normalText().copyWith(color: Colors.white,fontWeight: FontWeight.bold),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
             )
           ],
         ),
-        Column(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              width: MediaQuery.of(context).size.width / 3,
-              height: MediaQuery.of(context).size.height / 5,
-            ),
-            const Text(
-              "WATER",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Colors.white),
-            )
-          ],
-        ),
-      ],
+      ),
     );
   }
 }

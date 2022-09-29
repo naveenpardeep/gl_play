@@ -23,7 +23,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                   _activitiesSlide2(screenWidth),
                 ],
                 options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height*1.1,
+                    height: MediaQuery.of(context).size.height*1.2,
                     viewportFraction: 1.0,
                     enlargeCenterPage: false, enableInfiniteScroll: false
                   // autoPlay: false,
@@ -40,7 +40,8 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
         borderRadius: BorderRadius.circular(20.0),
         color: Colors.blue,
       ),
-      child: Column(
+      child:
+      Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
@@ -51,29 +52,17 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
               style: AppTextStyle.title().copyWith(color: Colors.white),
             ),
             const SizedBox(
-              height: 120,
+              height: 50,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start ,
+            Wrap(
+              direction: Axis.horizontal,
               children: [
-                Row(
-                  children: [
-                    _activityImageAndLabel("Splashmania"),
-                    _activityImageAndLabel("Big Bucket Splash"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    _activityImageAndLabel("Water Playscape"),
-                    _activityImageAndLabel("Beach Pool Club"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    _activityImageAndLabel("D'Swim Academy"),
-                    const Expanded(child: SizedBox()),
-                  ],
-                ),
+                _activityImageAndLabel("Splashmania"),
+                _activityImageAndLabel("Big Bucket Splash"),
+                _activityImageAndLabel("Water Playscape"),
+                _activityImageAndLabel("Beach Pool Club"),
+                _activityImageAndLabel("D'Swim Academy"),
+                const Expanded(child: SizedBox()),
               ],
             ),
             const Expanded(child: SizedBox(height: double.infinity,)),
@@ -105,26 +94,15 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(
-              height: 120,
+              height: 50,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start ,
+            Wrap(
+              direction: Axis.horizontal,
               children: [
-                Row(
-                  children: [
-                    _activityImageAndLabel("Water Playscape"),
-                    _activityImageAndLabel("Beach Pool Club"),
-                  ],
-                ),
-                Row(
-                  children: [
-                    _activityImageAndLabel("D'Swim Academy"),
-                    const Expanded(child: SizedBox()),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+                _activityImageAndLabel("Water Playscape"),
+                _activityImageAndLabel("Beach Pool Club"),
+                _activityImageAndLabel("D'Swim Academy"),
+                const Expanded(child: SizedBox()),
               ],
             ),
             const Expanded(child: SizedBox(height: double.infinity,)),
@@ -156,9 +134,10 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
   }
   
   Widget _activityImageAndLabel(String label){
-    return Expanded(
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.5,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

@@ -31,6 +31,43 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
         price: 69.00),
   ];
 
+  final List<bool> _isOpen = [false,false,false,false];
+  //final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    //_scrollController.addListener(_onScrollEvent);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    //_scrollController.dispose();
+  }
+  // void _onScrollEvent(){
+  //   if(_scrollController.position.atEdge){
+  //     final isTop = _scrollController.position.pixels;
+  //     if( isTop != 0){
+  //       showModalBottomSheet(
+  //           context: context,
+  //           builder: (_) => _bestOfferModal(),
+  //           elevation: 0,
+  //         isDismissible: true,
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(20.0),
+  //         ),
+  //         backgroundColor: Colors.white,
+  //         constraints: const BoxConstraints(
+  //           minHeight: 100,
+  //           maxHeight: 200,
+  //         )
+  //       );
+  //     }
+  //   }
+  // }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +83,11 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
           _specialOfferSection(),
         ],
       ),
+      //bottomSheet: widget.activity.promotion != null ? _bottomSheet() : null,
     );
   }
+
+
 
   Widget _specialOfferSection(){
     return SliverToBoxAdapter(
@@ -270,7 +310,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ExpansionPanelList(
-          elevation: 1,
+          elevation: 0,
           children: [
             ExpansionPanel(
               headerBuilder: (context, isExpanded) {
@@ -290,8 +330,8 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                   ],
                 );
               },
-              body: const Text('Hidden text to show'),
-              isExpanded: false,
+              body: const Text('Ticket Rates'),
+              isExpanded: _isOpen[0],
             ),
             ExpansionPanel(
               headerBuilder: (context, isExpanded) {
@@ -311,8 +351,8 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                   ],
                 );
               },
-              body: const Text('Hidden text to show'),
-              isExpanded: false,
+              body: const Text('Location? Show map here?'),
+              isExpanded: _isOpen[1],
             ),
             ExpansionPanel(
               headerBuilder: (context, isExpanded) {
@@ -332,8 +372,8 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                   ],
                 );
               },
-              body: const Text('Hidden text to show'),
-              isExpanded: false,
+              body: const Text('Show hidden Operation Hours'),
+              isExpanded: _isOpen[2],
             ),
             ExpansionPanel(
               headerBuilder: (context, isExpanded) {
@@ -353,10 +393,15 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                   ],
                 );
               },
-              body: const Text('Hidden text to show'),
-              isExpanded: false,
+              body: const Text('Show hidden Enquiry'),
+              isExpanded: _isOpen[3],
             ),
           ],
+          expansionCallback: (index, isExpanded){
+            setState(() {
+              _isOpen[index] = !_isOpen[index];
+            });
+          },
         ),
       ),
     );
@@ -429,7 +474,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('STEVEN',style: AppTextStyle.header2(),),
+                Text('KAREN',style: AppTextStyle.header2(),),
                 RatingBar.builder(
                   itemSize: 24,
                   ignoreGestures: true,
@@ -711,6 +756,37 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
           style: AppTextStyle.header3().copyWith(color: labelColor),
         ),
       ),
+    );
+  }
+
+  Widget _bottomSheet(){
+    return Wrap(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              color: Colors.red,
+              border: Border.all(color: Colors.black26),
+              borderRadius: BorderRadius.circular(10.0)),
+          child: Container(
+            //padding: EdgeInsets.only(top: 10.0),
+            margin: const EdgeInsets.only(top: 15.0),
+            color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Best Offer',style: AppTextStyle.normalText(),),
+                  Text('buy 1 free 1'.toUpperCase(), style: AppTextStyle.bigAssText()),
+                  Text('RM99.00 per pax', style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10,),
+                  _buttonWithBorderRadius('BOOK NOW', Colors.white, Colors.red)
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

@@ -136,6 +136,8 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
             Text(
               description,
               style: AppTextStyle.biggerText().copyWith(color: Colors.black54),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 10,
             ),
             const SizedBox(height: 15),
             const Expanded(child: SizedBox()),
@@ -154,6 +156,8 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
                       style: AppTextStyle.smallText().copyWith(fontWeight: FontWeight.w300),
                     ),
                   ]),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 10),
           ],

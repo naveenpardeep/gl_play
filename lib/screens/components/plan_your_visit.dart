@@ -25,7 +25,7 @@ class _PlanYourVisitState extends State<PlanYourVisit> {
                 children: [
                   Text(
                     "PLAN YOUR VISIT",
-                    style: AppTextStyle.title(),
+                    style: AppTextStyle(context).title(),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20.0,),
@@ -50,7 +50,7 @@ class _PlanYourVisitState extends State<PlanYourVisit> {
                 alignment: Alignment.center,
                 child: Column(
                   children: [
-                    Text("FIND YOUR MEMORIES",style:AppTextStyle.title().copyWith(color: Colors.white),),
+                    Text("FIND YOUR MEMORIES",style:AppTextStyle(context).title().copyWith(color: Colors.white),),
                     const SizedBox(height: 20,),
                     _buttonWithBorderRadius("SEARCH PHOTO", Colors.white, Colors.red),
                   ],
@@ -112,7 +112,7 @@ class _PlanYourVisitState extends State<PlanYourVisit> {
           color: Colors.red,
         ),
         const SizedBox(height: 10,),
-        Text(bottomLabel, style: AppTextStyle.header4().copyWith(color: Colors.red),)
+        Text(bottomLabel, style: AppTextStyle(context).header4().copyWith(color: Colors.red),)
       ],
     );
   }

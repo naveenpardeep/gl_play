@@ -19,11 +19,12 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
           children: [
              Text(
               "PLAN YOUR IDEAL DAY",
-              style: AppTextStyle.title(),
+              style: AppTextStyle(context).title(),
+               textAlign: TextAlign.center,
             ),
              Text(
               "Select Your Preference Activities to Personalize Your Experience",
-              style: AppTextStyle.normalText(),
+              style: AppTextStyle(context).normalText(),
               textAlign: TextAlign.center,
             ),
             _preferenceActivitiesPlaceHolder(),
@@ -49,7 +50,7 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
                   fallbackHeight: MediaQuery.of(context).size.height / 10),
               Text(
                 "WATER",
-                style: AppTextStyle.header4(),
+                style: AppTextStyle(context).header4(),
               ),
               const Icon(
                 Icons.check_circle_outline,
@@ -65,7 +66,7 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
                   fallbackHeight: MediaQuery.of(context).size.height / 10),
               Text(
                 "WATER",
-                style: AppTextStyle.header4(),
+                style: AppTextStyle(context).header4(),
               ),
               const Icon(
                 Icons.check_circle_outline,
@@ -81,7 +82,7 @@ class _PlanYourIdealDayState extends State<PlanYourIdealDay> {
                   fallbackHeight: MediaQuery.of(context).size.height / 10),
               Text(
                 "WATER",
-                style: AppTextStyle.header4(),
+                style: AppTextStyle(context).header4(),
               ),
               const Icon(
                 Icons.check_circle_outline,

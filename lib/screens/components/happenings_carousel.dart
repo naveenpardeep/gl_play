@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/border_radius_button.dart';
 import 'package:gl_play/styles/text_style.dart';
 
 import '../../model/happening.dart';
@@ -48,9 +49,9 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "HAPPENINGS",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: AppTextStyle.of(context).title(),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -107,7 +108,7 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
                 ),
               ],
             ),
-            _buttonWithBorderRadius("VIEW ALL", Colors.white, Colors.red)
+            const BorderRadiusButton(label: 'View All', labelColor: Colors.white, buttonColor: Colors.red)
           ],
         ),
       ),
@@ -130,12 +131,12 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
           children: [
             Text(
               title,
-              style: AppTextStyle.header1(),
+              style: AppTextStyle(context).header1(),
             ),
             const SizedBox(height: 40),
             Text(
               description,
-              style: AppTextStyle.biggerText().copyWith(color: Colors.black54),
+              style: AppTextStyle(context).biggerText().copyWith(color: Colors.black54),
               overflow: TextOverflow.ellipsis,
               maxLines: 10,
             ),
@@ -148,12 +149,12 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
             const SizedBox(height: 10),
             RichText(
               text: TextSpan(
-                  text: 'TAG: ',
-                  style: AppTextStyle.normalText().copyWith(color: Colors.red,fontWeight: FontWeight.bold),
+                  text: 'TAG ',
+                  style: AppTextStyle(context).normalText().copyWith(color: Colors.red,fontWeight: FontWeight.bold),
                   children: <TextSpan>[
                     TextSpan(
                       text: tag,
-                      style: AppTextStyle.smallText().copyWith(fontWeight: FontWeight.w300),
+                      style: AppTextStyle(context).smallText().copyWith(fontWeight: FontWeight.w300),
                     ),
                   ]),
               maxLines: 2,
@@ -181,7 +182,7 @@ class _HappeningsCarouselState extends State<HappeningsCarousel> {
       ),
       child: Text(
         label,
-        style: AppTextStyle.biggerText().copyWith(color: Colors.white,fontWeight: FontWeight.bold)
+        style: AppTextStyle(context).biggerText().copyWith(color: Colors.white,fontWeight: FontWeight.bold)
       ),
     );
   }

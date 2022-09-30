@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/border_radius_button.dart';
 import 'package:gl_play/styles/text_style.dart';
 
 class ActivitiesCarousel extends StatefulWidget {
@@ -49,7 +50,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             ),
             Text(
               "WATER",
-              style: AppTextStyle.title().copyWith(color: Colors.white),
+              style: AppTextStyle(context).title().copyWith(color: Colors.white),
             ),
             const SizedBox(
               height: 50,
@@ -107,7 +108,8 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
               ],
             ),
             const Expanded(child: SizedBox(height: double.infinity,)),
-            _buttonWithBorderRadius('MORE WATER',Colors.lightGreen,Colors.white),
+            const BorderRadiusButton(label: 'MORE WATER', labelColor: Colors.lightGreen, buttonColor: Colors.white),
+            //_buttonWithBorderRadius('MORE WATER',Colors.lightGreen,Colors.white),
             const SizedBox(
               height: 20,
             ),
@@ -129,7 +131,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
       ),
       child:  Text(
         label,
-        style: AppTextStyle.biggerText().copyWith(color: labelColor,fontWeight: FontWeight.bold),
+        style: AppTextStyle(context).biggerText().copyWith(color: labelColor,fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -152,7 +154,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             const SizedBox(height: 10.0,),
             Text(
               label.toUpperCase(),
-              style: AppTextStyle.normalText().copyWith(color: Colors.white,fontWeight: FontWeight.bold),
+              style: AppTextStyle(context).normalText().copyWith(color: Colors.white,fontWeight: FontWeight.bold),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/border_radius_button.dart';
+import 'package:gl_play/styles/text_style.dart';
 
 class SubscribeForm extends StatefulWidget {
 
@@ -35,47 +37,44 @@ class _SubscribeFormState extends State<SubscribeForm> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "BE IN TOUCH WITH US",
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,color: Colors.red),
+                  style: AppTextStyle(context).title().copyWith(color: Colors.red),
                   textAlign: TextAlign.center,
                 ),
-                const Text(
+                Text(
                   "Get 100% discount on the next order after you sign up.",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal,color: Colors.black54),
+                  style: AppTextStyle(context).bigText().copyWith(color: Colors.black54),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10.0,),
                 _inputField('Name',"ex: Mohammad Fadil", _nameController),
                 _inputField('Email',"ex: Fadil@gmail.com", _emailController),
                 RichText(
-                  text: const TextSpan(
+                  text: TextSpan(
                       text: "By clicking on the \"Subscribe\" button, I have taken knowledge of and agree to the ",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
+                      style: AppTextStyle(context).bigText().copyWith(color: Colors.black),
                       children: <TextSpan>[
                         TextSpan(
                           text: "Privacy Policy ",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.normal,color: Colors.red
-                          ),
+                          style: AppTextStyle(context).bigText().copyWith(color: Colors.red),
                         ),
                         TextSpan(
                           text: "and ",
+                          style: AppTextStyle(context).bigText().copyWith(color: Colors.black),
                         ),
                         TextSpan(
                           text: "Term of use",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.normal,color: Colors.red
-                          ),
+                          style: AppTextStyle(context).bigText().copyWith(color: Colors.red),
                         ),
                         TextSpan(
-                          text: ".",
+                          text: ".", style: AppTextStyle(context).bigText().copyWith(color: Colors.black),
                         ),
                       ]
                   ),
                 ),
                 const SizedBox(height: 20.0,),
-                _buttonWithBorderRadius("SUBSCRIBE", Colors.white, Colors.red),
+                const BorderRadiusButton(label: 'SUBSCRIBE', labelColor: Colors.white, buttonColor: Colors.red),
                 const SizedBox(height: 20.0,),
               ],
             ),
@@ -94,12 +93,12 @@ class _SubscribeFormState extends State<SubscribeForm> {
           RichText(
             text: TextSpan(
                 text: label,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
-                children: const <TextSpan>[
+                style: AppTextStyle(context).bigText().copyWith(fontWeight: FontWeight.w700, color: Colors.black),
+                children: <TextSpan>[
                   TextSpan(
                     text: " *",
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w700,color: Colors.red
+                    style: AppTextStyle(context).bigText().copyWith(
+                        fontWeight: FontWeight.w700,color: Colors.red
                     ),
                   ),
                 ]
@@ -117,7 +116,7 @@ class _SubscribeFormState extends State<SubscribeForm> {
                 controller: controller,
                 decoration: InputDecoration(
                     border: InputBorder.none,
-                    hintText: hintText, hintStyle: TextStyle(color: Colors.black26, fontWeight: FontWeight.bold)
+                    hintText: hintText, hintStyle: AppTextStyle(context).header4().copyWith(color: Colors.black26)
                 ),
               ),
             ),

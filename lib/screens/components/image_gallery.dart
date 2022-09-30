@@ -16,7 +16,7 @@ class ImageGallery extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Text(
               "SHARE YOUR MEMORIES USING #GAMUDAPLAY",
-              style: AppTextStyle.title(),
+              style: AppTextStyle(context).title(),
               textAlign: TextAlign.center,
             ),
           ),

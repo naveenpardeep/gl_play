@@ -106,13 +106,13 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
             ),
             Text(
               activity.category.toUpperCase(),
-              style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold,color: Colors.blue),
+              style: AppTextStyle(context).normalText().copyWith(fontWeight: FontWeight.bold,color: Colors.blue),
             ),
             const SizedBox(
               height: 5.0,
             ),
             Text(activity.name.toUpperCase(),
-                style: AppTextStyle.header3()),
+                style: AppTextStyle(context).header3()),
             const SizedBox(
               height: 5.0,
             ),
@@ -120,7 +120,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
               activity.excerpt,
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
-              style: AppTextStyle.normalText().copyWith(color: Colors.black54),
+              style: AppTextStyle(context).normalText().copyWith(color: Colors.black54),
             ),
             const Expanded(
                 child: SizedBox(
@@ -130,10 +130,10 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
               color: Colors.black54,
               thickness: 0.5,
             ),
-            Text("NOW", style: AppTextStyle.header3()),
+            Text("NOW", style: AppTextStyle(context).header3()),
             Text(
               'RM${activity.price.toStringAsFixed(2)}',
-              style: AppTextStyle.title(),
+              style: AppTextStyle(context).title(),
             ),
           ],
         ),
@@ -192,7 +192,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen>
                         vertical: 2.0, horizontal: 4.0),
                     child: Text(
                       activity.promotion!.toUpperCase(),
-                      style: AppTextStyle.smallText().copyWith(
+                      style: AppTextStyle(context).smallText().copyWith(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),

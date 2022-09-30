@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gl_play/styles/text_style.dart';
 
 class ParksAndAttraction extends StatelessWidget {
   const ParksAndAttraction({Key? key}) : super(key: key);
@@ -13,9 +14,9 @@ class ParksAndAttraction extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "OUR PARKS & ATTRACTIONS",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: AppTextStyle.of(context).title(),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20.0,),

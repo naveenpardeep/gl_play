@@ -80,10 +80,16 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
           _gallerySection(),
           _customerReviewsSection(),
           _recommendedActivitiesSection(recommendedActivities),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: widget.activity.promotion != null ? 200 : 0,
+            ),
+          )
           //_specialOfferSection(),
+
         ],
       ),
-      //bottomSheet: widget.activity.promotion != null ? _bottomSheet() : null,
+      bottomSheet: widget.activity.promotion != null ? _bottomSheet() : null,
     );
   }
 
@@ -107,9 +113,9 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Best Offer',style: AppTextStyle.normalText(),),
-                  Text('buy 1 free 1'.toUpperCase(), style: AppTextStyle.bigAssText()),
-                  Text('RM99.00 per pax', style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold)),
+                  Text('Best Offer',style: AppTextStyle(context).normalText(),),
+                  Text('buy 1 free 1'.toUpperCase(), style: AppTextStyle(context).bigAssText()),
+                  Text('RM99.00 per pax', style: AppTextStyle(context).normalText().copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 10,),
                   _buttonWithBorderRadius('BOOK NOW', Colors.white, Colors.red)
                 ],
@@ -145,7 +151,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                         vertical: 2.0, horizontal: 4.0),
                     child: Text(
                       activity.promotion!.toUpperCase(),
-                      style: AppTextStyle.smallText().copyWith(
+                      style: AppTextStyle(context).smallText().copyWith(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -165,7 +171,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
           children: [
             Text(
               'ACTIVITIES YOU MAY INTERESTED',
-              style: AppTextStyle.header1(),
+              style: AppTextStyle(context).header1(),
             ),
             GridView.builder(
                 padding: EdgeInsets.zero,
@@ -213,7 +219,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                   child: Text(
                     'VIEW MORE',
                     style:
-                    AppTextStyle.header3(),
+                    AppTextStyle(context).header3(),
                   )),
             ),
           ],
@@ -231,7 +237,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
           children: [
             Text(
               'REVIEWS',
-              style: AppTextStyle.header2(),
+              style: AppTextStyle(context).header2(),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -239,7 +245,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               children: [
                 Text(
                   '5.0',
-                  style: AppTextStyle.bigAssText(),
+                  style: AppTextStyle(context).bigAssText(),
                 ),
                 RatingBar.builder(
                   itemSize: 36,
@@ -258,7 +264,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                     //print(rating);
                   },
                 ),
-                Text('69 reviews',style: AppTextStyle.normalText(),),
+                Text('69 reviews',style: AppTextStyle(context).normalText(),),
               ],
             )
           ],
@@ -283,8 +289,8 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children:  [
-                  Text("GALERY", style: AppTextStyle.header2(),),
-                  Text("#Gamudaplay", style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold)),
+                  Text("GALERY", style: AppTextStyle(context).header2(),),
+                  Text("#Gamudaplay", style: AppTextStyle(context).normalText().copyWith(fontWeight: FontWeight.bold)),
                 ],
               ),
               const SizedBox(width: 10,),
@@ -443,7 +449,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                 ),
                 Text(
                   '5.0',
-                  style: AppTextStyle.biggerText(),
+                  style: AppTextStyle(context).biggerText(),
                 ),
               ],
             )
@@ -474,7 +480,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('KAREN',style: AppTextStyle.header2(),),
+                Text('KAREN',style: AppTextStyle(context).header2(),),
                 RatingBar.builder(
                   itemSize: 24,
                   ignoreGestures: true,
@@ -492,17 +498,17 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                     //print(rating);
                   },
                 ),
-                Text('Highly Recommended',style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold),),
+                Text('Highly Recommended',style: AppTextStyle(context).normalText().copyWith(fontWeight: FontWeight.bold),),
               ],
             ),
           ],
         ),
         const SizedBox(height: 10,),
-        Text('31 FEB 2022',style: AppTextStyle.normalText()),
+        Text('31 FEB 2022',style: AppTextStyle(context).normalText()),
         const SizedBox(height: 10,),
         Text(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            style: AppTextStyle.normalText()
+            style: AppTextStyle(context).normalText()
         ),
         const SizedBox(height: 10,),
         Center(
@@ -511,12 +517,12 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
             children: [
               const Icon(Icons.thumb_up_sharp),
               const SizedBox(width: 10,),
-              Text('HELPFUL',style: AppTextStyle.normalText())],
+              Text('HELPFUL',style: AppTextStyle(context).normalText())],
           ),
         ),
         const SizedBox(height: 10,),
         Center(
-          child: Text('69 People Found This Helpful',style: AppTextStyle.normalText(),),
+          child: Text('69 People Found This Helpful',style: AppTextStyle(context).normalText(),),
         ),
         const SizedBox(height: 10,),
         const Divider(
@@ -549,7 +555,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('STEVEN',style: AppTextStyle.header2(),),
+                Text('STEVEN',style: AppTextStyle(context).header2(),),
                 RatingBar.builder(
                   itemSize: 24,
                   ignoreGestures: true,
@@ -567,17 +573,17 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                     //print(rating);
                   },
                 ),
-                Text('Highly Recommended',style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold),),
+                Text('Highly Recommended',style: AppTextStyle(context).normalText().copyWith(fontWeight: FontWeight.bold),),
               ],
             ),
           ],
         ),
         const SizedBox(height: 10,),
-        Text('31 FEB 2022',style: AppTextStyle.normalText()),
+        Text('31 FEB 2022',style: AppTextStyle(context).normalText()),
         const SizedBox(height: 10,),
         Text(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            style: AppTextStyle.normalText()
+            style: AppTextStyle(context).normalText()
         ),
         const SizedBox(height: 10,),
         Center(
@@ -586,12 +592,12 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
             children: [
               const Icon(Icons.thumb_up_sharp),
               const SizedBox(width: 10,),
-              Text('HELPFUL',style: AppTextStyle.normalText())],
+              Text('HELPFUL',style: AppTextStyle(context).normalText())],
           ),
         ),
         const SizedBox(height: 10,),
         Center(
-          child: Text('69 People Found This Helpful',style: AppTextStyle.normalText(),),
+          child: Text('69 People Found This Helpful',style: AppTextStyle(context).normalText(),),
         ),
         const SizedBox(height: 10,),
         const Divider(
@@ -628,11 +634,11 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                   children: [
                     Text(
                       activity.category.toUpperCase(),
-                      style: AppTextStyle.header2().copyWith(color: Colors.blue),
+                      style: AppTextStyle(context).header2().copyWith(color: Colors.blue),
                     ),
                     Text(
                       activity.name.toUpperCase(),
-                      style: AppTextStyle.header2(),
+                      style: AppTextStyle(context).header2(),
                     ),
                   ],
                 ),
@@ -644,7 +650,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
                 ),
                 Text(
                   '5.0',
-                  style: AppTextStyle.title().copyWith(fontWeight: FontWeight.normal),
+                  style: AppTextStyle(context).title().copyWith(fontWeight: FontWeight.normal),
                 ),
               ],
             ),
@@ -653,7 +659,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               children: [
                 const Icon(Icons.share_outlined, size: 24,),
                 const SizedBox(width: 10,),
-                Text('Share this',style: AppTextStyle.bigText(),),
+                Text('Share this',style: AppTextStyle(context).bigText(),),
               ],
             ),
             const SizedBox(height: 10,),
@@ -661,18 +667,18 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               children: [
                 const Icon(Icons.favorite_outline,size: 24,),
                 const SizedBox(width: 10,),
-                Text('Add to wishlist',style: AppTextStyle.bigText())
+                Text('Add to wishlist',style: AppTextStyle(context).bigText())
               ],
             ),
 
             Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-              child: Text(activity.description,style: AppTextStyle.bigText()),
+              child: Text(activity.description,style: AppTextStyle(context).bigText()),
             ),
 
             Text(
               'HIGHLIGHTS',
-              style: AppTextStyle.header4(),
+              style: AppTextStyle(context).header4(),
             ),
             _highlightSegment(),
             _highlightSegment(),
@@ -699,7 +705,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               child: Text(
                 'Rainforest themed water play attraction that covers 1,000 sq ft of land',
                 overflow: TextOverflow.visible,
-                style: AppTextStyle.bigText(),
+                style: AppTextStyle(context).bigText(),
               ))
         ],
       ),
@@ -753,7 +759,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
       child:  Center(
         child: Text(
           label,
-          style: AppTextStyle.header3().copyWith(color: labelColor),
+          style: AppTextStyle(context).header3().copyWith(color: labelColor),
         ),
       ),
     );
@@ -776,9 +782,9 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Best Offer',style: AppTextStyle.normalText(),),
-                  Text('buy 1 free 1'.toUpperCase(), style: AppTextStyle.bigAssText()),
-                  Text('RM99.00 per pax', style: AppTextStyle.normalText().copyWith(fontWeight: FontWeight.bold)),
+                  Text('Best Offer',style: AppTextStyle(context).normalText(),),
+                  Text('buy 1 free 1'.toUpperCase(), style: AppTextStyle(context).bigAssText()),
+                  Text('RM99.00 per pax', style: AppTextStyle(context).normalText().copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 10,),
                   _buttonWithBorderRadius('BOOK NOW', Colors.white, Colors.red)
                 ],

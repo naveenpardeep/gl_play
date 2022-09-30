@@ -29,6 +29,8 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    print("Device's height: ${MediaQuery.of(context).size.height}" );
+    print("Device's width: ${MediaQuery.of(context).size.width}" );
     return CustomScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       slivers: <Widget>[
@@ -38,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMi
         const ParksAndAttraction(),
         const HappeningsCarousel(),
         const PlanYourVisit(),
-        const ImageGallery(),
+        //const ImageGallery(),
         const SubscribeForm(),
       ],
     );

@@ -80,7 +80,7 @@ class _ActivityDetailScreenState extends State<ActivityDetailScreen> {
           _gallerySection(),
           _customerReviewsSection(),
           _recommendedActivitiesSection(recommendedActivities),
-          _specialOfferSection(),
+          //_specialOfferSection(),
         ],
       ),
       //bottomSheet: widget.activity.promotion != null ? _bottomSheet() : null,

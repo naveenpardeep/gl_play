@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppTextStyle{
 
   // Bruh
+
   static TextStyle bigAssText(){
     return const TextStyle(
         fontSize: 40,

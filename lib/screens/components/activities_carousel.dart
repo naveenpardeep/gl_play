@@ -19,8 +19,8 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
           builder: (context){
             return CarouselSlider(
                 items: [
-                  _activitiesSlide1(screenWidth),
-                  _activitiesSlide2(screenWidth),
+                  _activitiesSlide1(screenWidth, screenHeight),
+                  _activitiesSlide2(screenWidth, screenHeight),
                 ],
                 options: CarouselOptions(
                     height: MediaQuery.of(context).size.height*1.2,
@@ -34,7 +34,7 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
     );
   }
 
-  Widget _activitiesSlide1(double width){
+  Widget _activitiesSlide1(double width,double height){
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
@@ -57,11 +57,11 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             Wrap(
               direction: Axis.horizontal,
               children: [
-                _activityImageAndLabel("Splashmania"),
-                _activityImageAndLabel("Big Bucket Splash"),
-                _activityImageAndLabel("Water Playscape"),
-                _activityImageAndLabel("Beach Pool Club"),
-                _activityImageAndLabel("D'Swim Academy"),
+                _activityImageAndLabel("Splashmania",width,height),
+                _activityImageAndLabel("Big Bucket Splash",width,height),
+                _activityImageAndLabel("Water Playscape",width,height),
+                _activityImageAndLabel("Beach Pool Club",width,height),
+                _activityImageAndLabel("D'Swim Academy",width,height),
                 const Expanded(child: SizedBox()),
               ],
             ),
@@ -74,8 +74,9 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
     );
   }
 
-  Widget _activitiesSlide2(double width){
+  Widget _activitiesSlide2(double width,double height){
     return Container(
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         color: Colors.green,
@@ -99,9 +100,9 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
             Wrap(
               direction: Axis.horizontal,
               children: [
-                _activityImageAndLabel("Water Playscape"),
-                _activityImageAndLabel("Beach Pool Club"),
-                _activityImageAndLabel("D'Swim Academy"),
+                _activityImageAndLabel("Water Playscape",width,height),
+                _activityImageAndLabel("Beach Pool Club",width,height),
+                _activityImageAndLabel("D'Swim Academy",width,height),
                 const Expanded(child: SizedBox()),
               ],
             ),
@@ -133,9 +134,9 @@ class _ActivitiesCarouselState extends State<ActivitiesCarousel> {
     );
   }
   
-  Widget _activityImageAndLabel(String label){
+  Widget _activityImageAndLabel(String label,double width, double height){
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: width * 0.5,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0,vertical: 10.0),
         child: Column(
